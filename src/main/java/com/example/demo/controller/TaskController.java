@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TaskController {
@@ -20,7 +21,7 @@ public class TaskController {
         return  taskRepository.findAll();
     }
     @GetMapping("/tasks/{id}")
-    public Task getTask(@PathVariable(required = false) Long id){
+    public Optional<Task> getTask(@PathVariable(required = false) Long id){
         return  taskRepository.findById(id);
     }
 

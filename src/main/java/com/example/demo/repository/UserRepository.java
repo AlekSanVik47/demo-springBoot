@@ -13,7 +13,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
     Optional<User> findByLogin(String login);
 
-    User findById(Long id);
+    Optional<User> findById(Long id);
 
     User save(User user);
 }

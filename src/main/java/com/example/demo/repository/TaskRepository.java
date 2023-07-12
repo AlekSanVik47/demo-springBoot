@@ -9,13 +9,15 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional
 public interface TaskRepository extends PagingAndSortingRepository<Task, Long> {
     Task save(Task task);
     List<Task> findAll();
-    Task findById(Long id);
+    @Override
+    Optional<Task> findById(Long id);
     void deleteById(Long id);
 
     @Modifying

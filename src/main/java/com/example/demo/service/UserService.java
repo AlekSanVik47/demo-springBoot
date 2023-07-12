@@ -5,7 +5,12 @@ import com.example.demo.model.User;
 import java.util.Optional;
 
 public interface UserService {
-    User saveUser(User user);
+    Optional<User> saveUser(User user);
+
+    User create(User user);
+
+    User getCurrentUser();
+
     Optional<User> findByUserLogin (String login);
-    User findByUserId (Long id);
+    Optional<User> findByUserId (Long id);
 }
