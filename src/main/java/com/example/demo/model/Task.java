@@ -2,12 +2,14 @@ package com.example.demo.model;
 
 
 import lombok.Data;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+
 import java.time.LocalDate;
+@Getter
+@Setter
 @Data
 @Entity
 public class Task {
@@ -17,4 +19,7 @@ public class Task {
     private LocalDate date;
     private String description;
     private Boolean done;
+
+    @Column (name = "user_id")
+    private Long userId;
 }

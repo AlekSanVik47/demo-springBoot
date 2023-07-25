@@ -1,10 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Task;
 import com.example.demo.model.User;
 import com.example.demo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +24,11 @@ public class UserController {
     @GetMapping("/users/{id}")
     public Optional<User> getUserById(@PathVariable(required = false) Long id){
         return usersService.findByUserId(id);
+    }
+
+    @GetMapping(value = "/users/user/{id}")
+    public List<Task> getUserTasks(@PathVariable(required = false) Long id){
+        return usersService.getTasksById(id);
     }
     @PutMapping("/users/{id}")
     Optional<User> update(@PathVariable(required = false) Long id, @RequestBody(required = false) User user){

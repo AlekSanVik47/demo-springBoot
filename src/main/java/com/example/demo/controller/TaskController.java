@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Task;
 import com.example.demo.repository.TaskRepository;
+import com.example.demo.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +13,11 @@ import java.util.Optional;
 public class TaskController {
     @Autowired
     private TaskRepository taskRepository;
+    @Autowired
+    private TaskService taskService;
     @PostMapping("/tasks")
     public Task create(@RequestBody Task task){
-       return taskRepository.save(task);
+       return taskService.taskCreate(task);
     }
     @GetMapping("/tasks")
     public List<Task> getAllTasks(){

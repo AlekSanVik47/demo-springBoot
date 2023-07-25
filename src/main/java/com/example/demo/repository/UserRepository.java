@@ -12,6 +12,7 @@ import java.util.Optional;
 @Transactional
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
+
     Optional<User> findByLogin(String login);
     @Override
     Optional<User> findById(Long id);
