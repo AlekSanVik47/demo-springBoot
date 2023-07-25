@@ -41,6 +41,23 @@ dependencies {
 
 
 }
+task copyGitIgnore(type: Copy) {
+	from "."
+	include ".gitignore"
+	into "$buildDir"
+}
+
+def gitIgnore = new File("$buildDir/.gitignore")
+if (gitIgnore.exists()) {
+	def excludes = gitIgnore.readLines().findAll { it.trim() && !it.startsWith('#') }.collect { "**/$it" }
+	sourceSets {
+		main {
+			java {
+				exclude excludes
+			}
+		}
+	}
+}
 
 tasks.named('test') {
 	useJUnitPlatform()
