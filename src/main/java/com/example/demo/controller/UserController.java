@@ -23,4 +23,13 @@ public class UserController {
     public Optional<User> getUserById(@PathVariable(required = false) Long id){
         return usersService.findByUserId(id);
     }
+    @PutMapping("/users/{id}")
+    Optional<User> update(@PathVariable(required = false) Long id, @RequestBody(required = false) User user){
+        user.setId(id);
+        return usersService.saveUser(user);
+    }
+    @DeleteMapping("/users/{id}")
+    public void delete(@PathVariable(required = false) Long id){
+        usersService.deleteById(id);
+    }
 }
