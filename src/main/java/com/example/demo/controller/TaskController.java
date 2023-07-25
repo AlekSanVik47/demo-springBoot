@@ -27,7 +27,6 @@ public class TaskController {
     public Optional<Task> getTask(@PathVariable(required = false) Long id){
         return  taskRepository.findById(id);
     }
-
     @PutMapping("/tasks/{id}")
     public Task update(@PathVariable(required = false) Long id, @RequestBody(required = false) Task task){
         task.setId(id);

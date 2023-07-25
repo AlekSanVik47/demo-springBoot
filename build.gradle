@@ -41,7 +41,7 @@ dependencies {
 
 
 }
-task copyGitIgnore(type: Copy) {
+tasks.register('copyGitIgnore', Copy) {
 	from "."
 	include ".gitignore"
 	into "$buildDir"
